@@ -37,10 +37,12 @@ const App = () => {
 	// 	})
 	// }
 
-	console.log(personsState)
+	const [otherState, setOtherState] = useState("some other value")
+
+	console.log(personsState, otherState)
 
 	// switch name using useState
-	// useState does not merge the previous and next state, you have to enter all variables if you want them
+	// useState does not merge the previous and next state, you have to enter all variables if you want them, it replaces it
 	const switchNameHandler = () => {
 		// console.log('Was clicked!')
 		// DO NOT DO THIS: personsState[0].name = "Maximillian"
@@ -49,8 +51,7 @@ const App = () => {
 				{name: "Zeta", age: 19},
 				{name: "Babel", age: 27},
 				{name: "Christina", age: 99}
-			],
-			otherState: personsState.otherState
+			]
 		})
 	}
 
