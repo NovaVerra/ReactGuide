@@ -7,9 +7,9 @@ class App extends Component {
 	// state of class based component
 	state = {
 		persons: [
-			{name: "Abby", age: 19},
-			{name: "Babel", age: 27},
-			{name: "Christina", age: 32}
+			{id: "0", name: "Abby", age: 19},
+			{id: "1", name: "Babel", age: 27},
+			{id: "2", name: "Christina", age: 32}
 		],
 		otherState: "some other value",
 		showPersons: false
@@ -52,11 +52,12 @@ class App extends Component {
 		if (this.state.showPersons) {
 			persons = (
 				<div>
-					{this.state.persons.map((person, personIndex) => {
+					{this.state.persons.map((person, index) => {
 						return <Person 
+							key={person.id}
 							name={person.name}
 							age={person.age}
-							click={this.deletePersonHandler.bind(this, personIndex)}/>
+							click={this.deletePersonHandler.bind(this, index)}/>
 					})}
 				</div>
 			)
