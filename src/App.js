@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
-import Radium from 'radium'
 import styles from './App.module.css'
-
 import Person from './Person/Person'
 
 class App extends Component {
@@ -52,17 +50,10 @@ class App extends Component {
 	}
 
 	render () {
-		const style = {
-			backgroundColor: "green",
-			color: "white",
-			font: "inherit",
-			border: "1px solid blue",
-			padding: "8px",
-			cursor: "pointer",
-		}
-
 		// CONDITIONAL RENDERING
 		let persons = null
+		let btnStyle = ''
+
 		if (this.state.showPersons) {
 			persons = (
 				<div>
@@ -71,13 +62,12 @@ class App extends Component {
 							key={person.id}
 							name={person.name}
 							age={person.age}
-							click={this.deletePersonHandler.bind(this, index)}
+							click={() => this.deletePersonHandler.bind(this, index)}
 							change={(event) => this.nameChangeHandler(event, person.id)}/>
 					})}
 				</div>
 			)
-
-			style.backgroundColor = 'red'
+			btnStyle = styles.Red
 		}
 
 		const classes = []
@@ -92,9 +82,9 @@ class App extends Component {
 			<div className={styles.App}>
 				<h1>Hello, I am an React App</h1>
 				<p className={classes.join(' ')}>This is really working</p>
-				<button 
-					onClick={this.togglePersonsHandler}
-					style={style}>Toggle Persons</button>
+				<button
+					className={btnStyle} 
+					onClick={this.togglePersonsHandler}>Toggle Persons</button>
 				{persons}
 			</div>
 		)
