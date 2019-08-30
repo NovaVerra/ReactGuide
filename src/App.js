@@ -4,7 +4,7 @@ import Person from './Person/Person';
 
 class App extends Component {
 
-	// state of class based component
+	// STATE OF CLASS BASED COMPONENT
 	state = {
 		persons: [
 			{id: "0", name: "Abby", age: 19},
@@ -15,24 +15,27 @@ class App extends Component {
 		showPersons: false
 	}
 
-	// change name through text input on GUI
+	// CHANGE NAME THROUGH TEXTBOX
 	nameChangeHandler = (event, id) => {
+		// Return true if index is found
 		const personIndex = this.state.persons.findIndex(p => {
 			return p.id === id
 		})
-
+		// Copy the element in the array
 		const person = {...this.state.persons[personIndex]}
-
+		// Set textbox as name
 		person.name = event.target.value
 
 		// const person = Object.assign({}, this.state.persons[personIndex])
 
+		// Copy entire array
 		const persons = [...this.state.persons]
 		persons[personIndex] = person
 
 		this.setState({persons: persons})
 	}
 
+	// REMOVE PEROSN BY CLICKING ON IT
 	deletePersonHandler = (personIndex) => {
 		// const persons = this.state.persons.slice();
 		const persons = [...this.state.persons]
@@ -40,6 +43,7 @@ class App extends Component {
 		this.setState({persons: persons})
 	}
 
+	// HIDE OR SHOW LIST
 	togglePersonsHandler = () => {
 		const doesShow = this.state.showPersons
 		this.setState({showPersons: !doesShow})
@@ -47,15 +51,16 @@ class App extends Component {
 
 	render () {
 		const style = {
-			backgroundColor: 'white',
+			backgroundColor: 'green',
+			color: 'white',
 			font: 'inherit',
 			border: '1px solid blue',
 			padding: '8px',
 			cursor: 'pointer'
 		}
 
+		// CONDITIONAL RENDERING
 		let persons = null
-
 		if (this.state.showPersons) {
 			persons = (
 				<div>
@@ -69,6 +74,8 @@ class App extends Component {
 					})}
 				</div>
 			)
+
+			style.backgroundColor = 'red'
 		}
 
 		return (
