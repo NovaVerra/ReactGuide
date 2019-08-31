@@ -62,7 +62,7 @@ class App extends Component {
 							key={person.id}
 							name={person.name}
 							age={person.age}
-							click={() => this.deletePersonHandler.bind(this, index)}
+							click={this.deletePersonHandler.bind(this, index)}
 							change={(event) => this.nameChangeHandler(event, person.id)}/>
 					})}
 				</div>
