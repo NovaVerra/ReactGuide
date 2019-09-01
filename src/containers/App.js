@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import styles from './App.module.css'
-import Person from '../components/Persons/Person/Person'
+import Persons from '../components/Persons/Persons'
+import Cockpit from '../components/Cockpit/Cockpit'
 
 class App extends Component {
 
@@ -52,39 +53,24 @@ class App extends Component {
 	render () {
 		// CONDITIONAL RENDERING
 		let persons = null
-		let btnStyle = ''
 
 		if (this.state.showPersons) {
 			persons = (
 				<div>
-					{this.state.persons.map((person, index) => {
-						return <Person 
-							key={person.id}
-							name={person.name}
-							age={person.age}
-							click={this.deletePersonHandler.bind(this, index)}
-							change={(event) => this.nameChangeHandler(event, person.id)}/>
-					})}
+					<Persons
+						persons={this.state.persons}
+						clicked={this.deletePersonHandler}
+						changed={this.nameChangeHandler}/>
 				</div>
 			)
-			btnStyle = styles.Red
-		}
-
-		const classes = []
-		if (this.state.persons.length <= 2) {
-			classes.push(styles.red) // classes = ["red"]
-		}
-		if (this.state.persons.length <= 1) {
-			classes.push(styles.bold) // classes = ["red", "bold"]
 		}
 
 		return (
 			<div className={styles.App}>
-				<h1>Hello, I am an React App</h1>
-				<p className={classes.join(' ')}>This is really working</p>
-				<button
-					className={btnStyle} 
-					onClick={this.togglePersonsHandler}>Toggle Persons</button>
+				<Cockpit
+					persons={this.state.persons}
+					showPersons={this.state.showPersons}
+					click={this.togglePersonsHandler}/>
 				{persons}
 			</div>
 		)
