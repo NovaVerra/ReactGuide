@@ -40,7 +40,8 @@ class App extends Component {
 			{id: "2", name: "Christina", age: 32}
 		],
 		otherState: "some other value",
-		showPersons: false
+		showPersons: false,
+		showCockpit: true
 	}
 
 	// CHANGE NAME THROUGH TEXTBOX
@@ -95,11 +96,12 @@ class App extends Component {
 
 		return (
 			<div className={styles.App}>
-				<Cockpit
+				<button onClick={() => {this.setState({showCockpit: false})}}>Remove Cockpit</button>
+				{this.state.showCockpit ? <Cockpit
 					title={this.props.appTitle}
 					persons={this.state.persons}
 					showPersons={this.state.showPersons}
-					click={this.togglePersonsHandler}/>
+					click={this.togglePersonsHandler}/> : null}
 				{persons}
 			</div>
 		)
