@@ -15,8 +15,21 @@ class App extends Component {
 		return state
 	}
 
+	// componentWillUpdate = () => {
+	// 	console.log("[App.js] componentWillUpdate")
+	// }
+
 	componentDidMount = () => {
 		console.log("[App.js] componentDidMount")
+	}
+	
+	shouldComponentUpdate = (nextProps, nextState) => {
+		console.log("[App.js] shouldComponentUpdate")
+		return true
+	}
+
+	componentDidUpdate = () => {
+		console.log("[App.js] componentDidUpdate")
 	}
 
 	// STATE OF CLASS BASED COMPONENT
