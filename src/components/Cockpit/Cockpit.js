@@ -6,7 +6,10 @@ const Cockpit = (props) => {
 	useEffect (() => {
 		console.log("[Cockpit.js] useEffect")
 		// HTTP requests
-	})
+		setTimeout(() => {
+			alert("Saved data to cloud")
+		}, 1000)
+	}, [])
 
 	const classes = []
 	let btnStyle = ''
