@@ -43,7 +43,8 @@ class App extends Component {
 		],
 		otherState: "some other value",
 		showPersons: false,
-		showCockpit: true
+		showCockpit: true,
+		keyCounter: 0
 	}
 
 	// CHANGE NAME THROUGH TEXTBOX
@@ -63,7 +64,12 @@ class App extends Component {
 		const persons = [...this.state.persons]
 		persons[personIndex] = person
 
-		this.setState({persons: persons})
+		this.setState((prevState, props) => {
+			return {
+				persons: persons,
+				keyCounter: prevState.keyCounter + 1
+			}
+		})
 	}
 
 	// REMOVE PEROSN BY CLICKING ON IT
