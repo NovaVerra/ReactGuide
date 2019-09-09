@@ -44,7 +44,8 @@ class App extends Component {
 		otherState: "some other value",
 		showPersons: false,
 		showCockpit: true,
-		keyCounter: 0
+		keyCounter: 0,
+		authenticated: false
 	}
 
 	// CHANGE NAME THROUGH TEXTBOX
@@ -86,6 +87,10 @@ class App extends Component {
 		this.setState({showPersons: !doesShow})
 	}
 
+	loginHandler = () => {
+		this.setState({authenticated: true})
+	}
+
 	render () {
 		console.log("[App.js] render")
 		// CONDITIONAL RENDERING
@@ -97,7 +102,8 @@ class App extends Component {
 					<Persons
 						persons={this.state.persons}
 						clicked={this.deletePersonHandler}
-						changed={this.nameChangeHandler}/>
+						changed={this.nameChangeHandler}
+						isAuthenticated={this.state.authenticated}/>
 				</div>
 			)
 		}
@@ -109,7 +115,8 @@ class App extends Component {
 					title={this.props.appTitle}
 					personsLength={this.state.persons.length}
 					showPersons={this.state.showPersons}
-					click={this.togglePersonsHandler}/> : null}
+					click={this.togglePersonsHandler}
+					login={this.loginHandler}/> : null}
 				{persons}
 			</Aux>
 		)
